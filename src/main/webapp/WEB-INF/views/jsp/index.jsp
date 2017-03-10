@@ -6,9 +6,34 @@
 <title>Gradle + Spring MVC</title>
 
 <spring:url value="/resources/core/css/hello.css" var="coreCss" />
-<spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
+<spring:url value="/resources/core/css/bootstrap.min.css"
+	var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${coreCss}" rel="stylesheet" />
+<script>
+	function sumOfAll() {
+		var totalWaranty = 0;
+		$('#ItemsTable tr:gt(0)').each(function() {
+			var reading = new Object();
+
+// 			reading.name = $(this).find('td:first input').val();
+// 			reading.value = $(this).find('td:last  input').val();
+
+// 			console.log($(this).find('td:first input').val());
+
+// 			console.log($(this).find('td:nth-child(0) input').val());
+// 			console.log($(this).find('td:nth-child(1) input').val());
+
+			console.log($(this).find('td:eq(0) input').val());
+			
+			var currentWaranty = $(this).find('td:eq(0) input').val();
+			totalWaranty += parseInt(currentWaranty);
+			console.log(totalWaranty);
+
+		});
+
+	}
+</script>
 </head>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +56,8 @@
 				Welcome Welcome!
 			</c:if>
 		<p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+			<a class="btn btn-primary btn-lg" href="#" role="button">Learn
+				more</a>
 		</p>
 	</div>
 </div>
@@ -69,12 +95,32 @@
 	</footer>
 </div>
 
-<spring:url value="/resources/core/css/hello.js" var="coreJs" />
-<spring:url value="/resources/core/css/bootstrap.min.js" var="bootstrapJs" />
+
+<div class="mytable">
+	<table id="ItemsTable" class="ItemsTable">
+		<tbody>
+			<tr>
+				<th>Number1</th>
+				<th>Number2</th>
+			</tr>
+			<tr>
+				<td><input id="a" onblur="sumOfAll();"> </input></td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td><input id="b" onblur="sumOfAll();"> </input></td>
+				<td>2</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<spring:url value="./resources/core/css/hello.js" var="coreJs" />
+<spring:url value="./resources/core/css/bootstrap.min.js"
+	var="bootstrapJs" />
 
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body>
 </html>
